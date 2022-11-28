@@ -1,68 +1,53 @@
-# rules - last in, first out
-
-# list structure [ head [next]] --> [ head [next]]
-# where the current next is the head of the next object 
-
 class Element
-  attr_reader :datum, :next
+  attr_reader :datum
+  attr_accessor :next
 
-  def initialize(element, element2=nil)
-    @datum = element
-    @next = element2
-  end 
-    
+  def initialize(datum, nxt=nil)
+    @datum = datum
+    @next = nxt
+  end
+
   def tail?
-    @element2 == nil
-  end 
-end 
+    @next == nil
+  end
+end
 
 class SimpleLinkedList
-  @@next = nil 
-
   def initialize
     @list = []
-  end 
+  end
 
-  def size 
+  def size
     @list.size
-  end 
+  end
 
   def empty?
     @list.empty?
   end
 
-  def push(ele)
-    ele = Element.new(ele)
-    @list << ele
-  end
-  
-  def pop
-    @list.pop.datum
+  def push(value)
+    val1 = Element.new(value)
+
+    if @list.empty?
+      @list.push(val1)
+    else 
+      @list[-1].next = val1 
+      @list.unshift(val1)
+    end
   end
 
   def peek
     return nil if @list.empty?
-    head.datum
+    @list.last.datum
   end
 
   def head
-    last_ele = @list.size - 1
-    @list[last_ele]
-  end 
-
-  def self.from_a(obj)
-    list = SimpleLinkedList.new 
-    obj.each do |ele|
-      p list.push(Element.new(ele).datum)
-    end
-    list
+    @list[0]
   end
+
+  def [](idx)
+    @list[idx]
+  end
+
+ 
 end
-
-
-
-
-
-
-
-
