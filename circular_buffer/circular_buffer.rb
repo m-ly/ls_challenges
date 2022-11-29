@@ -27,7 +27,7 @@
 # algorithm
 # create an array that has n number of spaces that are available.    
 # if the index is greater than that number, the first element in the array should be dropped to make room for the new element
-# 
+
 
 
 class CircularBuffer
