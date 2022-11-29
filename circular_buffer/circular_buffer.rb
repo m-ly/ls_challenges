@@ -11,8 +11,6 @@
 #     - this is namespaced from CircularBuffer::BufferEmptyException
 #       - does this mean that our custom buffer class is a subclass of StandardError?
 
-
-
 # rules
 # if a buffer is empty a custom exception is raised
 # write can start anywhere in the buffer, but for our usage, we will start at idx 0
